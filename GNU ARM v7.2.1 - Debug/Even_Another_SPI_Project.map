@@ -9802,10 +9802,10 @@ Discarded input sections
                 0x0000000000000000       0x5c ./src/spidrv.o
  .text.SPIDRV_MTransferB
                 0x0000000000000000       0x68 ./src/spidrv.o
- .text.SPIDRV_MTransferSingleItemB
-                0x0000000000000000       0x90 ./src/spidrv.o
  .text.SPIDRV_MTransmit
                 0x0000000000000000       0x4c ./src/spidrv.o
+ .text.SPIDRV_MTransmitB
+                0x0000000000000000       0x54 ./src/spidrv.o
  .text.SPIDRV_SetBitrate
                 0x0000000000000000       0x5c ./src/spidrv.o
  .text.SPIDRV_SetFramelength
@@ -9826,8 +9826,10 @@ Discarded input sections
                 0x0000000000000000       0xac ./src/spidrv.o
  .text.StartReceiveDMA
                 0x0000000000000000       0xdc ./src/spidrv.o
- .text.StartTransferDMA
-                0x0000000000000000       0xd8 ./src/spidrv.o
+ .text.StartTransmitDMA
+                0x0000000000000000       0xdc ./src/spidrv.o
+ .text.TransferApiBlockingPrologue
+                0x0000000000000000       0x70 ./src/spidrv.o
  .text.TransferApiPrologue
                 0x0000000000000000       0x70 ./src/spidrv.o
  .text.WaitForIdleLine
@@ -10543,7 +10545,7 @@ END GROUP
 LOAD /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtend.o
 LOAD /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtn.o
 
-.text           0x0000000000000000     0x3b7c
+.text           0x0000000000000000     0x3b4c
  *(.vectors)
  .vectors       0x0000000000000000       0xdc ./CMSIS/EFM32GG/startup_efm32gg.o
                 0x0000000000000000                __Vectors
@@ -10785,117 +10787,115 @@ LOAD /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2
                 0x0000000000002324       0x28 ./src/main.o
  .text.GPIO_PinInGet
                 0x000000000000234c       0x54 ./src/main.o
- .text.main     0x00000000000023a0       0xb0 ./src/main.o
+ .text.main     0x00000000000023a0       0xb8 ./src/main.o
                 0x00000000000023a0                main
  .text.sl_sleeptimer_init
-                0x0000000000002450       0x94 ./src/sl_sleeptimer.o
-                0x0000000000002450                sl_sleeptimer_init
+                0x0000000000002458       0x94 ./src/sl_sleeptimer.o
+                0x0000000000002458                sl_sleeptimer_init
  .text.sl_sleeptimer_stop_timer
-                0x00000000000024e4       0x7c ./src/sl_sleeptimer.o
-                0x00000000000024e4                sl_sleeptimer_stop_timer
+                0x00000000000024ec       0x7c ./src/sl_sleeptimer.o
+                0x00000000000024ec                sl_sleeptimer_stop_timer
  .text.process_timer_irq
-                0x0000000000002560      0x174 ./src/sl_sleeptimer.o
-                0x0000000000002560                process_timer_irq
+                0x0000000000002568      0x174 ./src/sl_sleeptimer.o
+                0x0000000000002568                process_timer_irq
  .text.delta_list_insert_timer
-                0x00000000000026d4       0xb8 ./src/sl_sleeptimer.o
+                0x00000000000026dc       0xb8 ./src/sl_sleeptimer.o
  .text.delta_list_remove_timer
-                0x000000000000278c       0x7c ./src/sl_sleeptimer.o
+                0x0000000000002794       0x7c ./src/sl_sleeptimer.o
  .text.set_comparator_for_next_timer
-                0x0000000000002808       0x30 ./src/sl_sleeptimer.o
+                0x0000000000002810       0x30 ./src/sl_sleeptimer.o
  .text.update_first_timer_delta
-                0x0000000000002838       0x70 ./src/sl_sleeptimer.o
+                0x0000000000002840       0x70 ./src/sl_sleeptimer.o
  .text.__NVIC_EnableIRQ
-                0x00000000000028a8       0x38 ./src/sl_sleeptimer_hal_rtc.o
+                0x00000000000028b0       0x38 ./src/sl_sleeptimer_hal_rtc.o
  .text.__NVIC_ClearPendingIRQ
-                0x00000000000028e0       0x3c ./src/sl_sleeptimer_hal_rtc.o
+                0x00000000000028e8       0x3c ./src/sl_sleeptimer_hal_rtc.o
  .text.RTC_CounterGet
-                0x000000000000291c       0x14 ./src/sl_sleeptimer_hal_rtc.o
+                0x0000000000002924       0x14 ./src/sl_sleeptimer_hal_rtc.o
  .text.RTC_CounterSet
-                0x0000000000002930       0x1c ./src/sl_sleeptimer_hal_rtc.o
+                0x0000000000002938       0x1c ./src/sl_sleeptimer_hal_rtc.o
  .text.RTC_IntClear
-                0x000000000000294c       0x1c ./src/sl_sleeptimer_hal_rtc.o
+                0x0000000000002954       0x1c ./src/sl_sleeptimer_hal_rtc.o
  .text.RTC_IntDisable
-                0x0000000000002968       0x24 ./src/sl_sleeptimer_hal_rtc.o
+                0x0000000000002970       0x24 ./src/sl_sleeptimer_hal_rtc.o
  .text.RTC_IntEnable
-                0x000000000000298c       0x24 ./src/sl_sleeptimer_hal_rtc.o
+                0x0000000000002994       0x24 ./src/sl_sleeptimer_hal_rtc.o
  .text.RTC_IntGet
-                0x00000000000029b0       0x14 ./src/sl_sleeptimer_hal_rtc.o
+                0x00000000000029b8       0x14 ./src/sl_sleeptimer_hal_rtc.o
  .text.sleeptimer_hal_init_timer
-                0x00000000000029c4       0x54 ./src/sl_sleeptimer_hal_rtc.o
-                0x00000000000029c4                sleeptimer_hal_init_timer
+                0x00000000000029cc       0x54 ./src/sl_sleeptimer_hal_rtc.o
+                0x00000000000029cc                sleeptimer_hal_init_timer
  .text.sleeptimer_hal_get_counter
-                0x0000000000002a18       0x44 ./src/sl_sleeptimer_hal_rtc.o
-                0x0000000000002a18                sleeptimer_hal_get_counter
+                0x0000000000002a20       0x44 ./src/sl_sleeptimer_hal_rtc.o
+                0x0000000000002a20                sleeptimer_hal_get_counter
  .text.sleeptimer_hal_set_compare
-                0x0000000000002a5c       0x90 ./src/sl_sleeptimer_hal_rtc.o
-                0x0000000000002a5c                sleeptimer_hal_set_compare
+                0x0000000000002a64       0x90 ./src/sl_sleeptimer_hal_rtc.o
+                0x0000000000002a64                sleeptimer_hal_set_compare
  .text.sleeptimer_hal_enable_int
-                0x0000000000002aec       0x58 ./src/sl_sleeptimer_hal_rtc.o
-                0x0000000000002aec                sleeptimer_hal_enable_int
+                0x0000000000002af4       0x58 ./src/sl_sleeptimer_hal_rtc.o
+                0x0000000000002af4                sleeptimer_hal_enable_int
  .text.sleeptimer_hal_disable_int
-                0x0000000000002b44       0x4c ./src/sl_sleeptimer_hal_rtc.o
-                0x0000000000002b44                sleeptimer_hal_disable_int
+                0x0000000000002b4c       0x4c ./src/sl_sleeptimer_hal_rtc.o
+                0x0000000000002b4c                sleeptimer_hal_disable_int
  .text.sleeptimer_hal_get_timer_frequency
-                0x0000000000002b90       0x14 ./src/sl_sleeptimer_hal_rtc.o
-                0x0000000000002b90                sleeptimer_hal_get_timer_frequency
+                0x0000000000002b98       0x14 ./src/sl_sleeptimer_hal_rtc.o
+                0x0000000000002b98                sleeptimer_hal_get_timer_frequency
  .text.RTC_IRQHandler
-                0x0000000000002ba4       0xb8 ./src/sl_sleeptimer_hal_rtc.o
-                0x0000000000002ba4                RTC_IRQHandler
+                0x0000000000002bac       0xb8 ./src/sl_sleeptimer_hal_rtc.o
+                0x0000000000002bac                RTC_IRQHandler
  .text.get_time_diff
-                0x0000000000002c5c       0x1a ./src/sl_sleeptimer_hal_rtc.o
- *fill*         0x0000000000002c76        0x2 
+                0x0000000000002c64       0x1a ./src/sl_sleeptimer_hal_rtc.o
+ *fill*         0x0000000000002c7e        0x2 
  .text.SPIDRV_Init
-                0x0000000000002c78      0x274 ./src/spidrv.o
-                0x0000000000002c78                SPIDRV_Init
- .text.SPIDRV_MTransmitB
-                0x0000000000002eec       0x54 ./src/spidrv.o
-                0x0000000000002eec                SPIDRV_MTransmitB
+                0x0000000000002c80      0x274 ./src/spidrv.o
+                0x0000000000002c80                SPIDRV_Init
+ .text.SPIDRV_MTransferSingleItemB
+                0x0000000000002ef4       0x90 ./src/spidrv.o
+                0x0000000000002ef4                SPIDRV_MTransferSingleItemB
  .text.BlockingComplete
-                0x0000000000002f40       0x24 ./src/spidrv.o
+                0x0000000000002f84       0x24 ./src/spidrv.o
  .text.GetSpiPins
-                0x0000000000002f64      0x458 ./src/spidrv.o
+                0x0000000000002fa8      0x458 ./src/spidrv.o
  .text.ConfigGPIO
-                0x00000000000033bc      0x182 ./src/spidrv.o
+                0x0000000000003400      0x182 ./src/spidrv.o
  .text.RxDMAComplete
-                0x000000000000353e       0x62 ./src/spidrv.o
- .text.StartTransmitDMA
-                0x00000000000035a0       0xdc ./src/spidrv.o
- .text.TransferApiBlockingPrologue
-                0x000000000000367c       0x70 ./src/spidrv.o
+                0x0000000000003582       0x62 ./src/spidrv.o
+ .text.StartTransferDMA
+                0x00000000000035e4       0xd8 ./src/spidrv.o
  .text.WaitForTransferCompletion
-                0x00000000000036ec       0x4a ./src/spidrv.o
+                0x00000000000036bc       0x4a ./src/spidrv.o
  .text.TIMER_IntClear
-                0x0000000000003736       0x1a ./src/ustimer.o
+                0x0000000000003706       0x1a ./src/ustimer.o
  .text.TIMER_IntGet
-                0x0000000000003750       0x16 ./src/ustimer.o
- *fill*         0x0000000000003766        0x2 
+                0x0000000000003720       0x16 ./src/ustimer.o
+ *fill*         0x0000000000003736        0x2 
  .text.TIMER0_IRQHandler
-                0x0000000000003768       0x38 ./src/ustimer.o
-                0x0000000000003768                TIMER0_IRQHandler
- .text          0x00000000000037a0       0x30 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/libgcc.a(_aeabi_uldivmod.o)
-                0x00000000000037a0                __aeabi_uldivmod
- .text          0x00000000000037d0      0x2d0 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
-                0x00000000000037d0                __udivmoddi4
- .text          0x0000000000003aa0        0x4 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/libgcc.a(_dvmd_tls.o)
-                0x0000000000003aa0                __aeabi_ldiv0
-                0x0000000000003aa0                __aeabi_idiv0
- .text.exit     0x0000000000003aa4       0x28 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-exit.o)
-                0x0000000000003aa4                exit
+                0x0000000000003738       0x38 ./src/ustimer.o
+                0x0000000000003738                TIMER0_IRQHandler
+ .text          0x0000000000003770       0x30 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/libgcc.a(_aeabi_uldivmod.o)
+                0x0000000000003770                __aeabi_uldivmod
+ .text          0x00000000000037a0      0x2d0 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
+                0x00000000000037a0                __udivmoddi4
+ .text          0x0000000000003a70        0x4 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/libgcc.a(_dvmd_tls.o)
+                0x0000000000003a70                __aeabi_ldiv0
+                0x0000000000003a70                __aeabi_idiv0
+ .text.exit     0x0000000000003a74       0x28 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-exit.o)
+                0x0000000000003a74                exit
  .text.__libc_init_array
-                0x0000000000003acc       0x48 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-init.o)
-                0x0000000000003acc                __libc_init_array
- .text.memset   0x0000000000003b14       0x10 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memset.o)
-                0x0000000000003b14                memset
- .text._exit    0x0000000000003b24        0x4 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/libnosys.a(_exit.o)
-                0x0000000000003b24                _exit
+                0x0000000000003a9c       0x48 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-init.o)
+                0x0000000000003a9c                __libc_init_array
+ .text.memset   0x0000000000003ae4       0x10 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-memset.o)
+                0x0000000000003ae4                memset
+ .text._exit    0x0000000000003af4        0x4 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/libnosys.a(_exit.o)
+                0x0000000000003af4                _exit
  *(.init)
- .init          0x0000000000003b28        0x4 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crti.o
-                0x0000000000003b28                _init
- .init          0x0000000000003b2c        0x8 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtn.o
+ .init          0x0000000000003af8        0x4 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crti.o
+                0x0000000000003af8                _init
+ .init          0x0000000000003afc        0x8 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtn.o
  *(.fini)
- .fini          0x0000000000003b34        0x4 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crti.o
-                0x0000000000003b34                _fini
- .fini          0x0000000000003b38        0x8 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtn.o
+ .fini          0x0000000000003b04        0x4 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crti.o
+                0x0000000000003b04                _fini
+ .fini          0x0000000000003b08        0x8 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtn.o
  *crtbegin.o(.ctors)
  *crtbegin?.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
@@ -10907,46 +10907,46 @@ LOAD /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
  *(.rodata*)
- .rodata        0x0000000000003b40       0x1c ./src/main.o
- .rodata        0x0000000000003b5c       0x18 ./src/spidrv.o
+ .rodata        0x0000000000003b10       0x1c ./src/main.o
+ .rodata        0x0000000000003b2c       0x18 ./src/spidrv.o
  .rodata._global_impure_ptr
-                0x0000000000003b74        0x4 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-impure.o)
-                0x0000000000003b74                _global_impure_ptr
+                0x0000000000003b44        0x4 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/libc_nano.a(lib_a-impure.o)
+                0x0000000000003b44                _global_impure_ptr
  *(.eh_frame*)
- .eh_frame      0x0000000000003b78        0x0 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtbegin.o
- .eh_frame      0x0000000000003b78        0x4 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtend.o
+ .eh_frame      0x0000000000003b48        0x0 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtbegin.o
+ .eh_frame      0x0000000000003b48        0x4 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtend.o
 
-.glue_7         0x0000000000003b7c        0x0
- .glue_7        0x0000000000003b7c        0x0 linker stubs
+.glue_7         0x0000000000003b4c        0x0
+ .glue_7        0x0000000000003b4c        0x0 linker stubs
 
-.glue_7t        0x0000000000003b7c        0x0
- .glue_7t       0x0000000000003b7c        0x0 linker stubs
+.glue_7t        0x0000000000003b4c        0x0
+ .glue_7t       0x0000000000003b4c        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000003b7c        0x0
- .vfp11_veneer  0x0000000000003b7c        0x0 linker stubs
+.vfp11_veneer   0x0000000000003b4c        0x0
+ .vfp11_veneer  0x0000000000003b4c        0x0 linker stubs
 
-.v4_bx          0x0000000000003b7c        0x0
- .v4_bx         0x0000000000003b7c        0x0 linker stubs
+.v4_bx          0x0000000000003b4c        0x0
+ .v4_bx         0x0000000000003b4c        0x0 linker stubs
 
-.iplt           0x0000000000003b7c        0x0
- .iplt          0x0000000000003b7c        0x0 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtbegin.o
+.iplt           0x0000000000003b4c        0x0
+ .iplt          0x0000000000003b4c        0x0 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000000000003b7c                __exidx_start = .
+                0x0000000000003b4c                __exidx_start = .
 
-.ARM.exidx      0x0000000000003b7c        0x8
+.ARM.exidx      0x0000000000003b4c        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x0000000000003b7c        0x8 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o
- .ARM.exidx     0x0000000000003b84        0x0 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
+ .ARM.exidx     0x0000000000003b4c        0x8 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/crt0.o
+ .ARM.exidx     0x0000000000003b54        0x0 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/libgcc.a(_udivmoddi4.o)
                                           0x8 (size before relaxing)
-                0x0000000000003b84                __exidx_end = .
-                0x0000000000003b84                __etext = .
+                0x0000000000003b54                __exidx_end = .
+                0x0000000000003b54                __etext = .
 
-.rel.dyn        0x0000000000003b84        0x0
- .rel.iplt      0x0000000000003b84        0x0 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtbegin.o
+.rel.dyn        0x0000000000003b54        0x0
+ .rel.iplt      0x0000000000003b54        0x0 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtbegin.o
 
-.data           0x0000000020000000       0x7c load address 0x0000000000003b84
+.data           0x0000000020000000       0x7c load address 0x0000000000003b54
                 0x0000000020000000                __data_start__ = .
  *(vtable)
  *(.data*)
@@ -10988,7 +10988,7 @@ LOAD /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2
                 0x000000002000007c                . = ALIGN (0x4)
                 0x000000002000007c                __data_end__ = .
 
-.igot.plt       0x000000002000007c        0x0 load address 0x0000000000003c00
+.igot.plt       0x000000002000007c        0x0 load address 0x0000000000003bd0
  .igot.plt      0x000000002000007c        0x0 /home/ruben/Simplicity/SimplicityStudio_v4/developer/toolchains/gnu_arm/7.2_2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7-m/crtbegin.o
 
 .bss            0x0000000020000100      0x570 load address 0x0000000000003d00
@@ -11134,7 +11134,7 @@ OUTPUT(Even_Another_SPI_Project.axf elf32-littlearm)
  .comment       0x000000000000007e       0x7f ./src/spidrv.o
  .comment       0x000000000000007e       0x7f ./src/ustimer.o
 
-.debug_line     0x0000000000000000     0xb477
+.debug_line     0x0000000000000000     0xb478
  .debug_line    0x0000000000000000       0xdb ./CMSIS/EFM32GG/startup_efm32gg.o
  .debug_line    0x00000000000000db      0xa18 ./CMSIS/EFM32GG/system_efm32gg.o
  .debug_line    0x0000000000000af3      0x8d8 ./src/dmactrl.o
@@ -11146,13 +11146,13 @@ OUTPUT(Even_Another_SPI_Project.axf elf32-littlearm)
  .debug_line    0x0000000000005403      0x99e ./src/em_rtc.o
  .debug_line    0x0000000000005da1      0xc8f ./src/em_usart.o
  .debug_line    0x0000000000006a30      0x9f2 ./src/gpiointerrupt.o
- .debug_line    0x0000000000007422      0x9d5 ./src/main.o
- .debug_line    0x0000000000007df7      0xcb3 ./src/sl_sleeptimer.o
- .debug_line    0x0000000000008aaa      0xb2a ./src/sl_sleeptimer_hal_rtc.o
- .debug_line    0x00000000000095d4     0x1324 ./src/spidrv.o
- .debug_line    0x000000000000a8f8      0xb7f ./src/ustimer.o
+ .debug_line    0x0000000000007422      0x9d6 ./src/main.o
+ .debug_line    0x0000000000007df8      0xcb3 ./src/sl_sleeptimer.o
+ .debug_line    0x0000000000008aab      0xb2a ./src/sl_sleeptimer_hal_rtc.o
+ .debug_line    0x00000000000095d5     0x1324 ./src/spidrv.o
+ .debug_line    0x000000000000a8f9      0xb7f ./src/ustimer.o
 
-.debug_info     0x0000000000000000    0x15448
+.debug_info     0x0000000000000000    0x15444
  .debug_info    0x0000000000000000       0x26 ./CMSIS/EFM32GG/startup_efm32gg.o
  .debug_info    0x0000000000000026     0x10c6 ./CMSIS/EFM32GG/system_efm32gg.o
  .debug_info    0x00000000000010ec      0xaab ./src/dmactrl.o
@@ -11164,11 +11164,11 @@ OUTPUT(Even_Another_SPI_Project.axf elf32-littlearm)
  .debug_info    0x0000000000009ec3      0xc97 ./src/em_rtc.o
  .debug_info    0x000000000000ab5a     0x1848 ./src/em_usart.o
  .debug_info    0x000000000000c3a2     0x1114 ./src/gpiointerrupt.o
- .debug_info    0x000000000000d4b6     0x16ce ./src/main.o
- .debug_info    0x000000000000eb84     0x145d ./src/sl_sleeptimer.o
- .debug_info    0x000000000000ffe1     0x12c6 ./src/sl_sleeptimer_hal_rtc.o
- .debug_info    0x00000000000112a7     0x270d ./src/spidrv.o
- .debug_info    0x00000000000139b4     0x1a94 ./src/ustimer.o
+ .debug_info    0x000000000000d4b6     0x16ca ./src/main.o
+ .debug_info    0x000000000000eb80     0x145d ./src/sl_sleeptimer.o
+ .debug_info    0x000000000000ffdd     0x12c6 ./src/sl_sleeptimer_hal_rtc.o
+ .debug_info    0x00000000000112a3     0x270d ./src/spidrv.o
+ .debug_info    0x00000000000139b0     0x1a94 ./src/ustimer.o
 
 .debug_abbrev   0x0000000000000000     0x2b55
  .debug_abbrev  0x0000000000000000       0x14 ./CMSIS/EFM32GG/startup_efm32gg.o
@@ -11222,7 +11222,7 @@ OUTPUT(Even_Another_SPI_Project.axf elf32-littlearm)
  .debug_aranges
                 0x0000000000000990       0xc0 ./src/ustimer.o
 
-.debug_str      0x0000000000000000    0xe22ac
+.debug_str      0x0000000000000000    0xe22be
  .debug_str     0x0000000000000000       0xf9 ./CMSIS/EFM32GG/startup_efm32gg.o
  .debug_str     0x00000000000000f9    0xd64ff ./CMSIS/EFM32GG/system_efm32gg.o
                                       0xd6c73 (size before relaxing)
@@ -11236,26 +11236,26 @@ OUTPUT(Even_Another_SPI_Project.axf elf32-littlearm)
                                       0xd77bb (size before relaxing)
  .debug_str     0x00000000000da7d9      0x2b7 ./src/em_dma.o
                                       0xd8884 (size before relaxing)
- .debug_str     0x00000000000daa90      0x454 ./src/em_gpio.o
+ .debug_str     0x00000000000daa90      0x44a ./src/em_gpio.o
                                       0xd73c9 (size before relaxing)
- .debug_str     0x00000000000daee4      0x130 ./src/em_rtc.o
+ .debug_str     0x00000000000daeda      0x130 ./src/em_rtc.o
                                       0xd69dd (size before relaxing)
- .debug_str     0x00000000000db014      0xd95 ./src/em_usart.o
+ .debug_str     0x00000000000db00a      0xd95 ./src/em_usart.o
                                       0xd8d2c (size before relaxing)
- .debug_str     0x00000000000dbda9       0xef ./src/gpiointerrupt.o
+ .debug_str     0x00000000000dbd9f       0xef ./src/gpiointerrupt.o
                                       0xd7c7e (size before relaxing)
- .debug_str     0x00000000000dbe98     0x48f8 ./src/main.o
-                                      0xdd46f (size before relaxing)
- .debug_str     0x00000000000e0790      0x97f ./src/sl_sleeptimer.o
+ .debug_str     0x00000000000dbe8e     0x490d ./src/main.o
+                                      0xdd484 (size before relaxing)
+ .debug_str     0x00000000000e079b      0x97f ./src/sl_sleeptimer.o
                                       0xdb6df (size before relaxing)
- .debug_str     0x00000000000e110f      0x29f ./src/sl_sleeptimer_hal_rtc.o
+ .debug_str     0x00000000000e111a      0x29f ./src/sl_sleeptimer_hal_rtc.o
                                       0xdc7c9 (size before relaxing)
- .debug_str     0x00000000000e13ae      0x38f ./src/spidrv.o
+ .debug_str     0x00000000000e13b9      0x396 ./src/spidrv.o
                                       0xde6bc (size before relaxing)
- .debug_str     0x00000000000e173d      0xb6f ./src/ustimer.o
+ .debug_str     0x00000000000e174f      0xb6f ./src/ustimer.o
                                       0xd95dc (size before relaxing)
 
-.debug_loc      0x0000000000000000     0x5ac3
+.debug_loc      0x0000000000000000     0x5ac1
  .debug_loc     0x0000000000000000      0x31c ./CMSIS/EFM32GG/system_efm32gg.o
  .debug_loc     0x000000000000031c      0x665 ./src/dmadrv.o
  .debug_loc     0x0000000000000981      0xe4c ./src/em_cmu.o
@@ -11265,11 +11265,11 @@ OUTPUT(Even_Another_SPI_Project.axf elf32-littlearm)
  .debug_loc     0x0000000000002ba5      0x28c ./src/em_rtc.o
  .debug_loc     0x0000000000002e31      0x7da ./src/em_usart.o
  .debug_loc     0x000000000000360b      0x338 ./src/gpiointerrupt.o
- .debug_loc     0x0000000000003943       0xe6 ./src/main.o
- .debug_loc     0x0000000000003a29      0x8a1 ./src/sl_sleeptimer.o
- .debug_loc     0x00000000000042ca      0x5ac ./src/sl_sleeptimer_hal_rtc.o
- .debug_loc     0x0000000000004876      0xb75 ./src/spidrv.o
- .debug_loc     0x00000000000053eb      0x6d8 ./src/ustimer.o
+ .debug_loc     0x0000000000003943       0xe4 ./src/main.o
+ .debug_loc     0x0000000000003a27      0x8a1 ./src/sl_sleeptimer.o
+ .debug_loc     0x00000000000042c8      0x5ac ./src/sl_sleeptimer_hal_rtc.o
+ .debug_loc     0x0000000000004874      0xb75 ./src/spidrv.o
+ .debug_loc     0x00000000000053e9      0x6d8 ./src/ustimer.o
 
 .debug_ranges   0x0000000000000000      0x938
  .debug_ranges  0x0000000000000000       0x60 ./CMSIS/EFM32GG/system_efm32gg.o
@@ -11287,7 +11287,7 @@ OUTPUT(Even_Another_SPI_Project.axf elf32-littlearm)
  .debug_ranges  0x0000000000000760      0x128 ./src/spidrv.o
  .debug_ranges  0x0000000000000888       0xb0 ./src/ustimer.o
 
-.debug_macro    0x0000000000000000    0x28015
+.debug_macro    0x0000000000000000    0x2802d
  .debug_macro   0x0000000000000000      0x3bb ./CMSIS/EFM32GG/system_efm32gg.o
  .debug_macro   0x00000000000003bb      0xa48 ./CMSIS/EFM32GG/system_efm32gg.o
  .debug_macro   0x0000000000000e03      0x39b ./CMSIS/EFM32GG/system_efm32gg.o
@@ -11382,28 +11382,28 @@ OUTPUT(Even_Another_SPI_Project.axf elf32-littlearm)
  .debug_macro   0x00000000000254cd      0x401 ./src/em_usart.o
  .debug_macro   0x00000000000258ce       0xf1 ./src/em_usart.o
  .debug_macro   0x00000000000259bf      0x3e1 ./src/gpiointerrupt.o
- .debug_macro   0x0000000000025da0      0x434 ./src/main.o
- .debug_macro   0x00000000000261d4       0x10 ./src/main.o
- .debug_macro   0x00000000000261e4       0x3a ./src/main.o
- .debug_macro   0x000000000002621e      0x6de ./src/main.o
- .debug_macro   0x00000000000268fc       0x10 ./src/main.o
- .debug_macro   0x000000000002690c       0x7f ./src/main.o
- .debug_macro   0x000000000002698b      0x4b4 ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026e3f       0x16 ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026e55       0x35 ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026e8a       0x10 ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026e9a       0x10 ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026eaa       0x2e ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026ed8       0x16 ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026eee       0x22 ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026f10       0x1c ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026f2c      0x445 ./src/sl_sleeptimer_hal_rtc.o
- .debug_macro   0x0000000000027371      0x44b ./src/spidrv.o
- .debug_macro   0x00000000000277bc       0x16 ./src/spidrv.o
- .debug_macro   0x00000000000277d2      0x344 ./src/spidrv.o
- .debug_macro   0x0000000000027b16      0x470 ./src/ustimer.o
- .debug_macro   0x0000000000027f86       0x7f ./src/ustimer.o
- .debug_macro   0x0000000000028005       0x10 ./src/ustimer.o
+ .debug_macro   0x0000000000025da0      0x44c ./src/main.o
+ .debug_macro   0x00000000000261ec       0x10 ./src/main.o
+ .debug_macro   0x00000000000261fc       0x3a ./src/main.o
+ .debug_macro   0x0000000000026236      0x6de ./src/main.o
+ .debug_macro   0x0000000000026914       0x10 ./src/main.o
+ .debug_macro   0x0000000000026924       0x7f ./src/main.o
+ .debug_macro   0x00000000000269a3      0x4b4 ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026e57       0x16 ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026e6d       0x35 ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026ea2       0x10 ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026eb2       0x10 ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026ec2       0x2e ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026ef0       0x16 ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026f06       0x22 ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026f28       0x1c ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026f44      0x445 ./src/sl_sleeptimer_hal_rtc.o
+ .debug_macro   0x0000000000027389      0x44b ./src/spidrv.o
+ .debug_macro   0x00000000000277d4       0x16 ./src/spidrv.o
+ .debug_macro   0x00000000000277ea      0x344 ./src/spidrv.o
+ .debug_macro   0x0000000000027b2e      0x470 ./src/ustimer.o
+ .debug_macro   0x0000000000027f9e       0x7f ./src/ustimer.o
+ .debug_macro   0x000000000002801d       0x10 ./src/ustimer.o
 
 .debug_frame    0x0000000000000000     0x2ae4
  .debug_frame   0x0000000000000000      0x180 ./CMSIS/EFM32GG/system_efm32gg.o

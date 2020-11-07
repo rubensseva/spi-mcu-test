@@ -9,11 +9,17 @@ SPIDRV_Handle_t handle = &handleData;
 #define LED_PORT     	gpioPortE
 #define LED_PIN      	2
 
+#define LED_PORT     	gpioPortE
+#define LED_PIN      	2
+
+#define OUT_PORT     	gpioPortC
+#define OUT_PIN      	4
+
 #define SPIDRV_MASTER_USART1_CUSTOM                                         \
   {                                                                    \
     USART1,                     /* USART port                       */ \
     _USART_ROUTE_LOCATION_LOC1, /* USART pins location number       */ \
-    100,                    /* Bitrate                          */ \
+    10,                    /* Bitrate                          */ \
     8,                          /* Frame length                     */ \
     0,                          /* Dummy Tx value for Rx only funcs */ \
     spidrvMaster,               /* SPI mode                         */ \
@@ -25,7 +31,8 @@ SPIDRV_Handle_t handle = &handleData;
 
 
 int main( void ) {
-  uint8_t buffer[10];
+  uint8_t rx;
+  uint8_t tx = 1;
   SPIDRV_Init_t initData = SPIDRV_MASTER_USART1_CUSTOM;
 
   // Initialize a SPI driver instance
@@ -43,11 +50,20 @@ int main( void ) {
 	  if (live_button_state == 0) {
 		  // turn on led
 		  GPIO_PinModeSet(LED_PORT, LED_PIN, gpioModePushPull, 1);
-		  SPIDRV_MTransmitB( handle, buffer, 10 );
+		  //GPIO_PinModeSet(OUT_PORT, OUT_PIN, gpioModePushPull, 1);
+		 // SPIDRV_MTransmitB( handle, buffer, 1 );
+
+
+		  SPIDRV_MTransferSingleItemB(handle,
+		  		tx,
+		  		&rx
+		  	);
+
 		  // turn off led
 		  for(volatile long i=0; i<1000000; i++);
 		          ;
 		  GPIO_PinModeSet(LED_PORT, LED_PIN, gpioModePushPull, 0);
+		  //GPIO_PinModeSet(OUT_PORT, OUT_PIN, gpioModePushPull, 0);
 	  }
    }
 }
