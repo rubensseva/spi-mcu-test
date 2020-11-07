@@ -12,14 +12,12 @@ SPIDRV_Handle_t handle = &handleData;
 #define LED_PORT     	gpioPortE
 #define LED_PIN      	2
 
-#define OUT_PORT     	gpioPortC
-#define OUT_PIN      	4
 
 #define SPIDRV_MASTER_USART1_CUSTOM                                         \
   {                                                                    \
     USART1,                     /* USART port                       */ \
     _USART_ROUTE_LOCATION_LOC1, /* USART pins location number       */ \
-    10,                    /* Bitrate                          */ \
+    10,                    		/* Bitrate                          */ \
     8,                          /* Frame length                     */ \
     0,                          /* Dummy Tx value for Rx only funcs */ \
     spidrvMaster,               /* SPI mode                         */ \
@@ -31,11 +29,10 @@ SPIDRV_Handle_t handle = &handleData;
 
 
 int main( void ) {
-  uint8_t rx;
-  uint8_t tx = 1;
+  uint8_t rx; // We wont receive anything, but still need a buffer
+  uint8_t tx = 10;
   SPIDRV_Init_t initData = SPIDRV_MASTER_USART1_CUSTOM;
 
-  // Initialize a SPI driver instance
   SPIDRV_Init( handle, &initData );
 
   CMU_ClockEnable(cmuClock_GPIO, true);
@@ -43,27 +40,14 @@ int main( void ) {
   GPIO_PinModeSet(BUTTON_PORT, BUTTON_PIN, gpioModeInput, 0);
 
   while (1) {
-	  // Grab the state of the button, 1 for high voltage, 0 for low
 	  bool live_button_state = GPIO_PinInGet(BUTTON_PORT, BUTTON_PIN);
 
-	  // If the button is currently pushed, blink a single cycle
 	  if (live_button_state == 0) {
-		  // turn on led
 		  GPIO_PinModeSet(LED_PORT, LED_PIN, gpioModePushPull, 1);
-		  //GPIO_PinModeSet(OUT_PORT, OUT_PIN, gpioModePushPull, 1);
-		 // SPIDRV_MTransmitB( handle, buffer, 1 );
-
-
-		  SPIDRV_MTransferSingleItemB(handle,
-		  		tx,
-		  		&rx
-		  	);
-
-		  // turn off led
+		  SPIDRV_MTransferSingleItemB(handle, tx, &rx );
 		  for(volatile long i=0; i<1000000; i++);
 		          ;
 		  GPIO_PinModeSet(LED_PORT, LED_PIN, gpioModePushPull, 0);
-		  //GPIO_PinModeSet(OUT_PORT, OUT_PIN, gpioModePushPull, 0);
 	  }
    }
 }
