@@ -6,6 +6,9 @@ SPIDRV_Handle_t handle = &handleData;
 #define BUTTON_PORT     gpioPortB
 #define BUTTON_PIN      9
 
+#define BUTTON2_PORT     gpioPortB
+#define BUTTON2_PIN      10
+
 #define LED_PORT     	gpioPortE
 #define LED_PIN      	2
 
@@ -17,12 +20,12 @@ SPIDRV_Handle_t handle = &handleData;
   {                                                                    \
     USART1,                     /* USART port                       */ \
     _USART_ROUTE_LOCATION_LOC1, /* USART pins location number       */ \
-    10,                    		/* Bitrate                          */ \
+    100000000,                    		/* Bitrate                          */ \
     8,                          /* Frame length                     */ \
     0,                          /* Dummy Tx value for Rx only funcs */ \
     spidrvMaster,               /* SPI mode                         */ \
     spidrvBitOrderMsbFirst,     /* Bit order on bus                 */ \
-    spidrvClockMode0,           /* SPI clock/phase mode             */ \
+    spidrvClockMode1,           /* SPI clock/phase mode             */ \
     spidrvCsControlAuto,        /* CS controlled by the driver      */ \
     spidrvSlaveStartImmediate   /* Slave start transfers immediately*/ \
   }
@@ -38,16 +41,28 @@ int main( void ) {
   CMU_ClockEnable(cmuClock_GPIO, true);
 
   GPIO_PinModeSet(BUTTON_PORT, BUTTON_PIN, gpioModeInput, 0);
+  GPIO_PinModeSet(BUTTON2_PORT, BUTTON2_PIN, gpioModeInput, 0);
 
   while (1) {
 	  bool live_button_state = GPIO_PinInGet(BUTTON_PORT, BUTTON_PIN);
 
 	  if (live_button_state == 0) {
-		  GPIO_PinModeSet(LED_PORT, LED_PIN, gpioModePushPull, 1);
+		  tx = 11;
+		  //GPIO_PinModeSet(LED_PORT, LED_PIN, gpioModePushPull, 1);
 		  SPIDRV_MTransferSingleItemB(handle, tx, &rx );
-		  for(volatile long i=0; i<1000000; i++);
-		          ;
-		  GPIO_PinModeSet(LED_PORT, LED_PIN, gpioModePushPull, 0);
+		  //for(volatile long i=0; i<100000; i++);
+		    //      ;
+		  //GPIO_PinModeSet(LED_PORT, LED_PIN, gpioModePushPull, 0);
 	  }
+
+	  bool live_button2_state = GPIO_PinInGet(BUTTON2_PORT, BUTTON2_PIN);
+	  if (live_button2_state == 0) {
+		  	  tx = 147;
+	  		  //GPIO_PinModeSet(LED_PORT, LED_PIN, gpioModePushPull, 1);
+	  		  SPIDRV_MTransferSingleItemB(handle, tx, &rx );
+	  		  //for(volatile long i=0; i<100000; i++);
+	  		      //    ;
+	  		  //GPIO_PinModeSet(LED_PORT, LED_PIN, gpioModePushPull, 0);
+	  	  }
    }
 }
