@@ -11222,7 +11222,7 @@ OUTPUT(Even_Another_SPI_Project.axf elf32-littlearm)
  .debug_aranges
                 0x0000000000000990       0xc0 ./src/ustimer.o
 
-.debug_str      0x0000000000000000    0xe22eb
+.debug_str      0x0000000000000000    0xe22d6
  .debug_str     0x0000000000000000       0xf9 ./CMSIS/EFM32GG/startup_efm32gg.o
  .debug_str     0x00000000000000f9    0xd64ff ./CMSIS/EFM32GG/system_efm32gg.o
                                       0xd6c73 (size before relaxing)
@@ -11236,23 +11236,23 @@ OUTPUT(Even_Another_SPI_Project.axf elf32-littlearm)
                                       0xd77bb (size before relaxing)
  .debug_str     0x00000000000da7d9      0x2b7 ./src/em_dma.o
                                       0xd8884 (size before relaxing)
- .debug_str     0x00000000000daa90      0x454 ./src/em_gpio.o
+ .debug_str     0x00000000000daa90      0x45e ./src/em_gpio.o
                                       0xd73c9 (size before relaxing)
- .debug_str     0x00000000000daee4      0x130 ./src/em_rtc.o
+ .debug_str     0x00000000000daeee      0x130 ./src/em_rtc.o
                                       0xd69dd (size before relaxing)
- .debug_str     0x00000000000db014      0xd95 ./src/em_usart.o
+ .debug_str     0x00000000000db01e      0xd95 ./src/em_usart.o
                                       0xd8d2c (size before relaxing)
- .debug_str     0x00000000000dbda9       0xef ./src/gpiointerrupt.o
+ .debug_str     0x00000000000dbdb3       0xef ./src/gpiointerrupt.o
                                       0xd7c7e (size before relaxing)
- .debug_str     0x00000000000dbe98     0x4930 ./src/main.o
-                                      0xdd4a7 (size before relaxing)
- .debug_str     0x00000000000e07c8      0x97f ./src/sl_sleeptimer.o
+ .debug_str     0x00000000000dbea2     0x4911 ./src/main.o
+                                      0xdd488 (size before relaxing)
+ .debug_str     0x00000000000e07b3      0x97f ./src/sl_sleeptimer.o
                                       0xdb6df (size before relaxing)
- .debug_str     0x00000000000e1147      0x29f ./src/sl_sleeptimer_hal_rtc.o
+ .debug_str     0x00000000000e1132      0x29f ./src/sl_sleeptimer_hal_rtc.o
                                       0xdc7c9 (size before relaxing)
- .debug_str     0x00000000000e13e6      0x396 ./src/spidrv.o
+ .debug_str     0x00000000000e13d1      0x396 ./src/spidrv.o
                                       0xde6bc (size before relaxing)
- .debug_str     0x00000000000e177c      0xb6f ./src/ustimer.o
+ .debug_str     0x00000000000e1767      0xb6f ./src/ustimer.o
                                       0xd95dc (size before relaxing)
 
 .debug_loc      0x0000000000000000     0x5ac1
@@ -11287,7 +11287,7 @@ OUTPUT(Even_Another_SPI_Project.axf elf32-littlearm)
  .debug_ranges  0x0000000000000760      0x128 ./src/spidrv.o
  .debug_ranges  0x0000000000000888       0xb0 ./src/ustimer.o
 
-.debug_macro    0x0000000000000000    0x2802d
+.debug_macro    0x0000000000000000    0x28015
  .debug_macro   0x0000000000000000      0x3bb ./CMSIS/EFM32GG/system_efm32gg.o
  .debug_macro   0x00000000000003bb      0xa48 ./CMSIS/EFM32GG/system_efm32gg.o
  .debug_macro   0x0000000000000e03      0x39b ./CMSIS/EFM32GG/system_efm32gg.o
@@ -11382,28 +11382,28 @@ OUTPUT(Even_Another_SPI_Project.axf elf32-littlearm)
  .debug_macro   0x00000000000254cd      0x401 ./src/em_usart.o
  .debug_macro   0x00000000000258ce       0xf1 ./src/em_usart.o
  .debug_macro   0x00000000000259bf      0x3e1 ./src/gpiointerrupt.o
- .debug_macro   0x0000000000025da0      0x44c ./src/main.o
- .debug_macro   0x00000000000261ec       0x10 ./src/main.o
- .debug_macro   0x00000000000261fc       0x3a ./src/main.o
- .debug_macro   0x0000000000026236      0x6de ./src/main.o
- .debug_macro   0x0000000000026914       0x10 ./src/main.o
- .debug_macro   0x0000000000026924       0x7f ./src/main.o
- .debug_macro   0x00000000000269a3      0x4b4 ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026e57       0x16 ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026e6d       0x35 ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026ea2       0x10 ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026eb2       0x10 ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026ec2       0x2e ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026ef0       0x16 ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026f06       0x22 ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026f28       0x1c ./src/sl_sleeptimer.o
- .debug_macro   0x0000000000026f44      0x445 ./src/sl_sleeptimer_hal_rtc.o
- .debug_macro   0x0000000000027389      0x44b ./src/spidrv.o
- .debug_macro   0x00000000000277d4       0x16 ./src/spidrv.o
- .debug_macro   0x00000000000277ea      0x344 ./src/spidrv.o
- .debug_macro   0x0000000000027b2e      0x470 ./src/ustimer.o
- .debug_macro   0x0000000000027f9e       0x7f ./src/ustimer.o
- .debug_macro   0x000000000002801d       0x10 ./src/ustimer.o
+ .debug_macro   0x0000000000025da0      0x434 ./src/main.o
+ .debug_macro   0x00000000000261d4       0x10 ./src/main.o
+ .debug_macro   0x00000000000261e4       0x3a ./src/main.o
+ .debug_macro   0x000000000002621e      0x6de ./src/main.o
+ .debug_macro   0x00000000000268fc       0x10 ./src/main.o
+ .debug_macro   0x000000000002690c       0x7f ./src/main.o
+ .debug_macro   0x000000000002698b      0x4b4 ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026e3f       0x16 ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026e55       0x35 ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026e8a       0x10 ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026e9a       0x10 ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026eaa       0x2e ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026ed8       0x16 ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026eee       0x22 ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026f10       0x1c ./src/sl_sleeptimer.o
+ .debug_macro   0x0000000000026f2c      0x445 ./src/sl_sleeptimer_hal_rtc.o
+ .debug_macro   0x0000000000027371      0x44b ./src/spidrv.o
+ .debug_macro   0x00000000000277bc       0x16 ./src/spidrv.o
+ .debug_macro   0x00000000000277d2      0x344 ./src/spidrv.o
+ .debug_macro   0x0000000000027b16      0x470 ./src/ustimer.o
+ .debug_macro   0x0000000000027f86       0x7f ./src/ustimer.o
+ .debug_macro   0x0000000000028005       0x10 ./src/ustimer.o
 
 .debug_frame    0x0000000000000000     0x2ae4
  .debug_frame   0x0000000000000000      0x180 ./CMSIS/EFM32GG/system_efm32gg.o
